@@ -11,6 +11,7 @@ info() { printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
 trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
 
 info "Starting backup"
+starttime=$( date )
 
 # Backup the most important directories into an archive named after
 # the machine this script is currently running on:
@@ -21,16 +22,15 @@ borg create                         \
     --list                          \
     --stats                         \
     --show-rc                       \
-    --compression lz4               \
+    --compression zstd              \
     --exclude-caches                \
     --exclude '/home/*/.cache/*'    \
     --exclude '/var/tmp/*'          \
                                     \
     ::'{hostname}-{now}'            \
-    /etc                            \
-    /home                           \
-    /root                           \
-    /var                            \
+    /folder1                        \
+    /folder2/data                   \
+
 
 backup_exit=$?
 
@@ -61,5 +61,10 @@ elif [ ${global_exit} -eq 1 ]; then
 else
     info "Backup and/or Prune finished with errors"
 fi
+
+endtime=$( date )
+runtimeseconds=$(( $(date -d "$endtime" "+%s") - $(date -d "$starttime" "+%s") ))
+
+echo "Backup took $runtimeseconds Seconds"
 
 exit ${global_exit}
