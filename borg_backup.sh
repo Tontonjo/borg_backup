@@ -1,5 +1,30 @@
 #!/bin/bash
 
+# Tonton Jo - 2021
+# Join me on Youtube: https://www.youtube.com/c/tontonjo
+
+# Script to make borg backups: small changes from official script
+
+# USAGE
+# Install borg Backup for your distribution
+# Initialize your backup target: borg init -e authenticated /path/to/backup
+# Backup the passphase and datastore key as suggested
+# Copy this script on your server
+# Edit BORG_REPO to your datastore /path/to/backup
+# Edit BORG_PASSPHRASE to the one you choose when you inited the repository
+# Edit /folder1 /folder2/data to the folders you want to backup
+# Edit --exclude as needed
+# Edit retention
+# Run script with bash borg_backup.sh
+
+
+version=1.0
+# V1.0: Initial Release
+
+# Sources:
+# https://borgbackup.readthedocs.io/en/stable/quickstart.html
+
+
 # Setting this, so the repo does not need to be given on the commandline:
 export BORG_REPO=ssh://username@example.com:2022/~/backup/main
 
