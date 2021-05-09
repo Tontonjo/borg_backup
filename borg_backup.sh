@@ -17,9 +17,7 @@ starttime=$( date )
 # the machine this script is currently running on:
 
 borg create                         \
-    --verbose                       \
-    --filter AME                    \
-    --list                          \
+    --progress                      \
     --stats                         \
     --show-rc                       \
     --compression zstd              \
@@ -43,11 +41,12 @@ info "Pruning repository"
 
 borg prune                          \
     --list                          \
+    --stats	                        \
     --prefix '{hostname}-'          \
     --show-rc                       \
-    --keep-daily    7               \
-    --keep-weekly   4               \
-    --keep-monthly  6               \
+    --keep-daily    1               \
+#    --keep-weekly   4               \
+#    --keep-monthly  6               \
 
 prune_exit=$?
 
@@ -65,6 +64,6 @@ fi
 endtime=$( date )
 runtimeseconds=$(( $(date -d "$endtime" "+%s") - $(date -d "$starttime" "+%s") ))
 
-echo "Backup took $runtimeseconds Seconds"
+echo "Total runtime: $runtimeseconds Seconds"
 
 exit ${global_exit}
