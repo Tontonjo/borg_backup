@@ -36,7 +36,6 @@ info() { printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
 trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
 
 info "Starting backup"
-starttime=$( date )
 
 # Backup the most important directories into an archive named after
 # the machine this script is currently running on:
@@ -86,9 +85,5 @@ else
     info "Backup and/or Prune finished with errors"
 fi
 
-endtime=$( date )
-runtimeseconds=$(( $(date -d "$endtime" "+%s") - $(date -d "$starttime" "+%s") ))
-
-echo "Total runtime: $runtimeseconds Seconds"
 
 exit ${global_exit}
