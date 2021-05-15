@@ -28,13 +28,13 @@ nano /path/to/borg/sshkeys/clients/remote-backup
 
 - Start your borg backup server container:
 
-"docker run -td \
-    --name borg-server \
-    --restart unless-stopped \
-    -p 2222:22  \
-    --volume /path/to/borg/sshkeys:/sshkeys \
-    --volume /path/to/borg/backup:/backup/ \
-    nold360/borgserver:latest"
+docker run -td ``\``
+    --name borg-server ``\``
+    --restart unless-stopped ``\``
+    -p 2222:22 ``\``
+    --volume /path/to/borg/sshkeys:/sshkeys ``\````\``
+    --volume /path/to/borg/backup:/backup/ ``\``
+    nold360/borgserver:latest
 
 
 # Passwordless SSH:
