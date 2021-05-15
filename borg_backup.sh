@@ -26,7 +26,10 @@ version=1.0
 
 
 # Setting this, so the repo does not need to be given on the commandline:
-export BORG_REPO=ssh://username@example.com:2022/~/backup/main
+# local target:
+export BORG_REPO=/path/to/repository
+# remote target
+# export BORG_REPO=ssh://username@example.com:2022/path/to/remote_repository
 
 # See the section "Passphrase notes" for more infos.
 export BORG_PASSPHRASE='XYZl0ngandsecurepa_55_phrasea&&123'
