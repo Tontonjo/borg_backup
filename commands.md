@@ -33,3 +33,8 @@ docker run -td \
     --volume /path/to/borg/sshkeys:/sshkeys \
     --volume /path/to/borg/backup:/backup/ \
     nold360/borgserver:latest
+
+
+# Passwordless SSH:
+
+https://raw.githubusercontent.com/Tontonjo/debian/master/passwordless_ssh.txt
