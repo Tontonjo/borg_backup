@@ -2,8 +2,10 @@
 
 apt-get install borgbackup
 
-local  
-borg init -e authenticated /path/to/repository
+local:  
+borg init -e authenticated /path/to/repository  
+remote:  
+borg init -e authenticated ssh://username@ip_hostname:2222/path/to_repository
 
 borg mount /path/to/repository /path/to/mountpoint
 
