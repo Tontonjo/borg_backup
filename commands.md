@@ -1,4 +1,4 @@
-# Please find here some commands :-)
+# General usage commands :-)
 
 apt-get install borgbackup
 
