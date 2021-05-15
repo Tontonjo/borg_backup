@@ -5,10 +5,10 @@ Join me on Youtube: https://www.youtube.com/c/tontonjo
 
 If you find this usefull, please think about a sub to support :-)
 
-# USAGE
+# GENEARL USAGE
 Install borg Backup for your distribution
 
-Docker instructions can be found in commands.md
+- Docker instructions can be found in commands.md
 
 Initialize your backup target: borg init -e authenticated /path/to/backup
 
