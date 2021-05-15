@@ -10,23 +10,23 @@ borg mount /path/to/repository /path/to/mountpoint
 
 Source: https://hub.docker.com/r/mannp/docker-borgserver
 
-create a folder that will host your keys:
+- create a folder that will host your keys:
 
 mkdir -p /path/to/borg/sshkeys/clients
 
-Ensure correct rights on folder:
+- Ensure correct rights on folder:
 
 chown 1000:1000 /path/to/borg/sshkeys
 
-Copy your PUBLIC key to the remote server on a new folder - name this new folder as the repository name you want to use:
+- Copy your PUBLIC key to the remote server on a new folder - name this new folder as the repository name you want to use:
 
-copy content of "/root/.ssh/id_rsa.pub"
+- copy content of "/root/.ssh/id_rsa.pub"
 
 nano /path/to/borg/sshkeys/clients/remote-backup
 
-paste content - save - exit
+- Paste content - save - exit
 
-Start your borg backup server container:
+- Start your borg backup server container:
 
 docker run -td \
     -p 2222:22  \
