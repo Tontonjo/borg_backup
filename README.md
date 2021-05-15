@@ -7,6 +7,7 @@ If you find this usefull, please think about a sub to support :-)
 
 # USAGE
 Install borg Backup for your distribution
+Docker instructions are in commands.md
 
 Initialize your backup target: borg init -e authenticated /path/to/backup
 
