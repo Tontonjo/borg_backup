@@ -29,7 +29,6 @@ nano /path/to/borg/sshkeys/clients/remote-backup
 - Start your borg backup server container:
 
 docker run -td \\
-
     --name borg-server \\
     
     --restart unless-stopped \\
