@@ -14,7 +14,7 @@ Initialize your backup target: borg init -e authenticated /path/to/backup
 
 Backup the passphase and datastore key as suggested
 
-Copy this script on your server
+Copy the borg_backup.sh script on your server
 
 Edit BORG_REPO to your datastore /path/to/backup
 
@@ -26,4 +26,4 @@ Edit --exclude as needed
 
 Edit Retention policy
 
-Run script with "bash borg_backup.sh"
+Run script with "bash borg_backup.sh" Use a cronjob to run it on a daily basis
