@@ -10,13 +10,16 @@ Install borg Backup for your distribution
 
 - Instructions can be found in [commands.txt](https://github.com/Tontonjo/borg_backup/blob/main/commands.txt)
 
-Initialize your backup target: borg init -e authenticated /path/to/backup
+Initialize your backup target
+
+- borg init -e authenticated /path/to/backup
+- borg init -e authenticated ssh://borg@10.0.0.171:2222/path/to/backup
 
 Backup the passphase and datastore key as suggested
 
 Copy the borg_backup.sh script on your server
 
-Edit BORG_REPO to your datastore /path/to/backup
+Edit BORG_REPO to aim at your local or remote datastore
 
 Edit BORG_PASSPHRASE to the one you choose when you inited the repository
 
