@@ -12,7 +12,7 @@
 # GENEARL USAGE
 Install borg Backup for your distribution
 
-- Instructions can be found in [commands.txt](https://github.com/Tontonjo/borg_backup/blob/main/commands.txt)
+- Instructions can be found in [commands.md](https://github.com/Tontonjo/borg_backup/blob/main/commands.txt)
 
 Initialize your backup target
 
