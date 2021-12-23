@@ -1,13 +1,28 @@
 # General usage commands :-)
 
+##Install borg
+```ssh
 apt-get install borgbackup
-
-local:  
+```
+## Initiate repository
+### local:  
+```ssh
 borg init -e authenticated /path/to/repository  
-remote:  
+```
+### remote:  
+```ssh
 borg init -e authenticated ssh://username@ip_hostname:2222/path/to_repository
+```
 
+## Export keys: 
+```ssh
+borg key export ssh://username@ip_hostname:2222/path/to_repository /root/borg-key
+```
+
+## Mount backups:
+```ssh
 borg mount /path/to/repository /path/to/mountpoint
+```
 
 # Docker borg Server:
 
