@@ -13,12 +13,14 @@ Install borg Backup for your distribution
 
 - Instructions can be found in [commands.md](https://github.com/Tontonjo/borg_backup/blob/main/commands.md)
 
-Initialize your backup target
-
-- borg init -e authenticated /path/to/backup
-- borg init -e authenticated ssh://borg@10.0.0.171:2222/path/to/backup
-
-Backup the passphase and datastore key as suggested
+### Initialize your backup repository 
+```ssh
+borg init -e keyfile /path/to/backup
+```
+```ssh
+borg init -e keyfile ssh://borg@10.0.0.171:2222/path/to/backup
+```
+### Backup the passphase and datastore key as suggested
 
 Copy the borg_backup.sh script on your server
 
@@ -32,4 +34,8 @@ Edit --exclude as needed
 
 Edit Retention policy
 
-Run script with "bash borg_backup.sh" Use a cronjob to run it on a daily basis
+Run script with
+```ssh
+bash borg_backup.sh" 
+```
+Use a cronjob to run it on a daily basis
