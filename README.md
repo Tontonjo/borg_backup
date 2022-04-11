@@ -39,3 +39,8 @@ Run script with
 bash borg_backup.sh" 
 ```
 Use a cronjob to run it on a daily basis
+
+## Export repository key - Important
+```ssh
+ borg key export /path/to/backup /path/to/key
+```
