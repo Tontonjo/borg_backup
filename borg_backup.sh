@@ -69,7 +69,7 @@ info "Pruning repository"
 borg prune                          \
     --list                          \
     --stats	                        \
-    --prefix '{hostname}-'          \
+    --glob-archives '{hostname}-*'          \
     --show-rc                       \
     --keep-daily    1               \
 #    --keep-weekly   4               \
