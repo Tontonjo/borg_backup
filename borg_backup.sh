@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Tonton Jo - 2021
+# Tonton Jo - 2024
 # Join me on Youtube: https://www.youtube.com/c/tontonjo
 
 # Script to make borg backups: small changes from official script
@@ -18,12 +18,17 @@
 # Run script with bash borg_backup.sh
 
 
-version=1.0
+version=2.0
 # V1.0: Initial Release
+# V2.0: Add compaction every month / needed to free-up space!
 
 # Sources:
 # https://borgbackup.readthedocs.io/en/stable/quickstart.html
 
+# Settings ----------------
+
+# Set the day of the month were compaction occurs
+dayofmonthforcompaction=1
 
 # Setting this, so the repo does not need to be given on the commandline:
 # local target:
@@ -34,6 +39,9 @@ export BORG_REPO=/path/to/repository
 # See the section "Passphrase notes" for more infos.
 export BORG_PASSPHRASE='XYZl0ngandsecurepa_55_phrasea&&123'
 
+# End of settings -----------------
+
+day=$(date +%-d)
 # some helpers and error handling:
 info() { printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
 trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
@@ -77,8 +85,24 @@ borg prune                          \
 
 prune_exit=$?
 
+	# Check if it's the  day of the month
+	if [ "$day" -eq $dayofmonthforcompaction ]; then
+		info "- It's the $dayofmonthforcompaction of the month!"
+	borg compact 						\
+	--cleanup-commits					\
+	--verbose							\
+	#	--show-rc						\
+	
+	compact_exit=$?
+	echo "- Backup exit: $compact_exit"
+	else
+		echo " - It's not the $dayofmonthforcompaction of the month."
+		compact_exit=0
+	fi
+ 
 # use highest exit code as global exit code
-global_exit=$(( backup_exit > prune_exit ? backup_exit : prune_exit ))
+global_exit=$(( (backup_exit > prune_exit ? backup_exit : prune_exit) > compact_exit ? (backup_exit > prune_exit ? backup_exit : prune_exit) : compact_exit ))
+
 
 if [ ${global_exit} -eq 0 ]; then
     info "Backup and Prune finished successfully"
